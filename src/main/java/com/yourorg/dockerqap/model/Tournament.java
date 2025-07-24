@@ -1,12 +1,20 @@
 package com.yourorg.dockerqap.model;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class tournament {
+public class Tournament {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +32,10 @@ public class tournament {
             joinColumns = @JoinColumn(name = "tournament_id"),
             inverseJoinColumns = @JoinColumn(name = "member_id")
     )
-    private Set<member> members = new HashSet<>();
+    private Set<Member> members = new HashSet<>();
 
     // Constructor
-    public tournament() {}
+    public Tournament() {}
 
     // Getters and Setters
     public Long getId() {
@@ -74,14 +82,13 @@ public class tournament {
         this.cashPrizeAmount = cashPrizeAmount;
     }
 
-    public void setMembers(Set<member> members) {
+    public void setMembers(Set<Member> members) {
         this.members = members;
     }
 
     // Helper methods
-    public void addMember(member member) {
+    public void addMember(Member member) {
         this.members.add(member);
         member.getTournaments().add(this);
     }
-
 }

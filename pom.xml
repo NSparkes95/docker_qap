@@ -14,12 +14,12 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version>
+        <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version> <!-- Java 17 is required for Spring Boot 3.x+ -->
     </properties>
 
     <dependencies>
@@ -29,7 +29,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Boot JPA Starter (Hibernate/JPA) -->
+        <!-- Spring Boot JPA Starter (Hibernate/JPA with Jakarta support) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -46,17 +46,9 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
             <scope>runtime</scope>
         </dependency>
-
-        <!-- Optional: Lombok for less boilerplate (only if you use it) -->
-        <!--
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        -->
 
         <!-- Spring Boot Test Starter (for unit tests) -->
         <dependency>

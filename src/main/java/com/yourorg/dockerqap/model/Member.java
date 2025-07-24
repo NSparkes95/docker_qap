@@ -1,13 +1,19 @@
 package com.yourorg.dockerqap.model;
 
-import javax.persistence.Entity;
-import javax.print.attribute.standard.PrintQuality;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.HashSet;
 
 @Entity
-public class member {
+public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,7 +27,7 @@ public class member {
 
     private Set<Tournament> tournaments = new HashSet<>();
 
-    public member() {}
+    public Member() {}
 
     public long getId(){
         return id;
@@ -81,12 +87,16 @@ public class member {
 
     public void addTournament(Tournament tournament) {
         tournaments.add(tournament);
-        tournament.getMembers().add(this);
     }
 
     public void setTournaments(Set<Tournament> tournaments) {
         this.tournaments = tournaments;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
 
 }
