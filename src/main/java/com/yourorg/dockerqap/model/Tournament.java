@@ -42,6 +42,10 @@ public class Tournament {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public LocalDate getStartDate() {
         return startDate;
     }
@@ -90,5 +94,9 @@ public class Tournament {
     public void addMember(Member member) {
         this.members.add(member);
         member.getTournaments().add(this);
+    }
+
+    public Set<Member> getMembers() {
+        return members;
     }
 }

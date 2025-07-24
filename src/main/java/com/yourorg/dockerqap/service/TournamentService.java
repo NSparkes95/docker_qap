@@ -50,4 +50,16 @@ public class TournamentService {
     public List<Tournament> searchByLocation(String location) {
         return tournamentRepository.findByLocationContainingIgnoreCase(location);
     }
+
+    public List<Tournament> getTournamentsByStartDate(LocalDate startDate) {
+        return tournamentRepository.findByStartDate(startDate);
+    }
+
+    public List<Tournament> getTournamentsByEndDate(LocalDate endDate) {
+        return tournamentRepository.findByEndDateBefore(endDate);
+    }
+
+    public List<Tournament> getTournamentsByLocation(String location) {
+        return tournamentRepository.findByLocationContainingIgnoreCase(location);
+    }
 }
