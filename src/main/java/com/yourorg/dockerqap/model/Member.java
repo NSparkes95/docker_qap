@@ -25,6 +25,7 @@ public class Member {
     private LocalDate startDateOfMembership;
     private Integer durationOfMembership;
 
+    @ManyToMany(mappedBy = "members")
     private Set<Tournament> tournaments = new HashSet<>();
 
     public Member() {}
